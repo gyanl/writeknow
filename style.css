@@ -12,7 +12,7 @@ html{
 }
 
 input[type="text"] {
-  background: var(--background-color);
+  background: #fff;
   border: 2px solid var(--overlay-edge-color);
   color: var(--text-color);
   padding: 8px 12px;
