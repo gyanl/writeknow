@@ -146,7 +146,7 @@
         var vtitle = document.getElementById('htmlTitle');
         var vsubtitle = document.getElementById('htmlSubtitle');
         var vbody = document.getElementsByClassName("pell-content")[0];
-        var vlogin = document.getElementById("logmein");
+        var veditButton = document.getElementById("logmein");
         var vtogglefeed = document.getElementById("togglefeed");
         var vdeletepage = document.getElementById("deletepage");
 
@@ -156,9 +156,37 @@
 
         var actionbar = document.getElementsByClassName("pell-actionbar")[0];
 
-        // Dont't allow editing of post body
+        // Default to view mode
+        vtitle.contentEditable = "false";
+        vsubtitle.contentEditable = "false";
         vbody.contentEditable = "false";
+        vbody.style.opacity = "0.8";
+        hideActionBar();
 
+        function toggleEditMode() {
+          const isEditing = vtitle.contentEditable === "true";
+          const newEditState = !isEditing;
+          
+          // Toggle editability
+          vtitle.contentEditable = newEditState;
+          vsubtitle.contentEditable = newEditState;
+          vbody.contentEditable = newEditState;
+          
+          // Toggle visual indicators
+          vbody.style.opacity = newEditState ? "1.0" : "0.8";
+          veditButton.innerHTML = newEditState ? "View" : "Edit";
+          
+          if (newEditState) {
+            showActionBar();
+          } else {
+            hideActionBar();
+            updateValues(); // Save when exiting edit mode
+          }
+        }
+
+        // Replace login listener with edit toggle
+        veditButton.innerHTML = "Edit"; // Change button text
+        veditButton.addEventListener("click", toggleEditMode);
 
         // One time run
         onValue(reference, (snapshot) => {
@@ -244,7 +272,7 @@
           document.getElementById('nameOfUser').innerHTML = vdisplayname;
 
           // Hide login button
-          vlogin.classList.add('displaynone');
+          veditButton.classList.add('displaynone');
 
           if (vemail == "ronramya@gmail.com" || vemail == "gyanlakhwani@gmail.com") {
             //User can edit, show edit access
@@ -317,7 +345,7 @@
         }
 
         // Add event listeners
-        vlogin.addEventListener("click", signInUser);
+        veditButton.addEventListener("click", toggleEditMode);
         vtogglefeed.addEventListener("click", toggleFeedStatus);
         vdeletepage.addEventListener("click", deleteThisPage);
 
@@ -341,8 +369,7 @@
           </ul>
         </div>
         <div class="footer-col one-half">
-          <h2 class="footer-heading"></h2>
-          <button class="loginbutton" type="button" id="logmein">Log in and Edit</button>
+          <button class="loginbutton" type="button" id="logmein">Edit</button>
           <button class="loginbutton displaynone" type="button" id="togglefeed">...</button>
           <button class="loginbutton redbutton displaynone" type="button" id="deletepage">Delete</button>
           <div class="logincontainer">
