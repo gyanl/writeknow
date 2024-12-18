@@ -1,9 +1,11 @@
 html{
   --background-color: #f4f6f9;
+  --background-color-form: #fff; 
   --foreground-color: #240909;
   --text-color-dark: #052840;
   --text-color: #02395E;
   --text-color-light: #999;
+  --text-color-form: #333;
   --accent-color-dark: #940f0f;
   --accent-color: #20519a;
   --accent-color-light: rgb(0 22 216 / 10%);
@@ -11,10 +13,30 @@ html{
   --overlay-edge-color: rgba(0, 0, 0, .08)
 }
 
+@media (prefers-color-scheme: dark){
+    html{
+        --background-color: #19182b;
+        --background-color-form: #fff;
+        --foreground-color: rgba(0, 0, 0, 0.3);
+        --text-color-dark: rgba(255, 255, 255, 1);
+        --text-color: rgba(255, 255, 255, .85);
+        --text-color-light: rgba(255, 255, 255, .7);
+        --text-color-form: #333;
+        --accent-color-dark: #b91d1d;
+        --accent-color: #ff4343;
+        --accent-color-light: #ff78781a;
+        --overlay-color: rgba(0, 0, 0, .2);
+        --overlay-edge-color: rgba(255, 255, 255, .2)
+    }
+  
+    .dark-only{
+      display: block;
+  }
+
 input[type="text"] {
-  background: #fff;
+  background: var(--background-color-form);
   border: 2px solid var(--overlay-edge-color);
-  color: var(--text-color);
+  color: var(--text-color-form);
   padding: 8px 12px;
   border-radius: 4px;
   font-size: 14px;
@@ -63,24 +85,6 @@ button{
   width: 120px;
   height: 120px;
   border-radius: 100px;
-}
-
-@media (prefers-color-scheme: dark){
-  html{
-      --background-color: #19182b;
-      --foreground-color: rgba(0, 0, 0, 0.3);
-      --text-color-dark: rgba(255, 255, 255, 1);
-      --text-color: rgba(255, 255, 255, .85);
-      --text-color-light: rgba(255, 255, 255, .7);
-      --accent-color-dark: #b91d1d;
-      --accent-color: #ff4343;
-      --accent-color-light: #ff78781a;
-      --overlay-color: rgba(0, 0, 0, .2);
-      --overlay-edge-color: rgba(255, 255, 255, .2)
-  }
-
-  .dark-only{
-    display: block;
 }
 
 
