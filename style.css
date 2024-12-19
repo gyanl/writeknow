@@ -33,24 +33,27 @@ html{
       display: block;
   }
 
-input[type="text"] {
-  background: var(--background-color-form);
-  border: 2px solid var(--overlay-edge-color);
-  color: var(--text-color-form);
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-size: 14px;
-  transition: border-color 0.2s ease;
 }
 
-input[type="text"]:focus {
-  outline: none;
-  border-color: var(--accent-color);
-}
+  input[type="text"] {
+    background: var(--background-color-form);
+    border: 2px solid var(--overlay-edge-color);
+    color: var(--text-color-form);
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+  }
 
-input[type="text"]::placeholder {
-  color: var(--text-color-light);
-}
+  input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+  }
+
+  input[type="text"]::placeholder {
+    color: var(--text-color-light);
+  }
+
 
 .url-preview{
     padding-top: 6px;
